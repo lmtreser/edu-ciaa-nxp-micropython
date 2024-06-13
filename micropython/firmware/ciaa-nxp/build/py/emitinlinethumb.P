@@ -1,0 +1,62 @@
+build/py/emitinlinethumb.o: ../py/emitinlinethumb.c \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdint.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdint.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_default_types.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/features.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdio.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/_ansi.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/newlib.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/config.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/ieeefp.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stddef.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdarg.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/reent.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/_ansi.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/_types.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_types.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/lock.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/types.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/types.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/stdio.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/string.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include-fixed/sys/cdefs.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/string.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/assert.h \
+ ../py/emit.h ../py/lexer.h ../py/mpconfig.h mpconfigport.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/alloca.h \
+ ../py/qstr.h ../py/misc.h \
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdbool.h \
+ build/genhdr/qstrdefs.generated.h ../py/scope.h ../py/parse.h \
+ ../py/emitglue.h ../py/obj.h ../py/mpprint.h ../py/runtime0.h \
+ ../py/asmthumb.h ../py/grammar.h
+../py/emitinlinethumb.c :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdint.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdint.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_default_types.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/features.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdio.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/_ansi.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/newlib.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/config.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/ieeefp.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stddef.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdarg.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/reent.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/_ansi.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/_types.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_types.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/lock.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/types.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/types.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/stdio.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/string.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include-fixed/sys/cdefs.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/string.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/assert.h :
+ ../py/emit.h ../py/lexer.h ../py/mpconfig.h mpconfigport.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/alloca.h :
+ ../py/qstr.h ../py/misc.h :
+ /home/lucas/Software/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdbool.h :
+ build/genhdr/qstrdefs.generated.h ../py/scope.h ../py/parse.h :
+ ../py/emitglue.h ../py/obj.h ../py/mpprint.h ../py/runtime0.h :
+ ../py/asmthumb.h ../py/grammar.h :

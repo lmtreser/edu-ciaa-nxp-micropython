@@ -1,0 +1,5 @@
+build/board_ciaa_edu_4337/src/ponchos/LCD4Bit.o: \
+ board_ciaa_edu_4337/src/ponchos/LCD4Bit.c \
+ board_ciaa_edu_4337/src/ponchos/LCD4Bit.h
+ board_ciaa_edu_4337/src/ponchos/LCD4Bit.c :
+ board_ciaa_edu_4337/src/ponchos/LCD4Bit.h :
