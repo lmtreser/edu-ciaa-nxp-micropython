@@ -1,24 +1,6 @@
-Soporte para EDU-CIAA
-========================
-Table of context
+# Modulo pyb:
 
-[TOC]
-
-<p align="center">
-  <img src="https://avatars0.githubusercontent.com/u/6998305?v=3&s=128" alt="CIAA Logo"/>
-</p>
-
-### Modo de uso:
-
-- Ejecutar `make clean all download` para compilar y bajar el programa en la EDU-CIAA.
-- Ejecute una terminal serial a 115200 en el segundo puerton serial del USB (usualmente /dev/ttyUSB1 en Linux)
-- Puede usar una linea de comandos python REPL en la UART del puerto USB de DEBUG.
-
-
-## Soporte de hardware
-
-### Modulo pyb:
-##### Soporte de los 4 LEDS
+## Soporte de los 4 LEDS
 
 Clase `pyb.LED`.
 
@@ -33,7 +15,7 @@ led1.off()
 Numeros de leds disponibles: de 1 a 6 (4:Red, 5:Green, 6:Blue)
 Mas info en : http://test-ergun.readthedocs.org/en/latest/library/pyb.LED.html
 
-##### Soporte para los 4 pulsadores de la placa
+## Soporte para los 4 pulsadores de la placa
 Clase `pyb.Switch`.
 
 Ejemplo:
@@ -46,7 +28,7 @@ print('sw1 vale:'+str(val))
 Numeros de switch disponibles:  de 1 a 4
 Mas info en : http://test-ergun.readthedocs.org/en/latest/library/pyb.Switch.html
 
-##### Soporte para la UART
+## Soporte para la UART
 
 Implementado RS232 del conector P1 y la UART RS485 de la placa mediante la clase `pyb.UART`.
 
@@ -81,7 +63,7 @@ art.init(115200,bits=8, parity=None, stop=1,timeout=0, timeout_char=1000, read_b
 En este ejemplo, se detectara un fin de trama cuando llegue el caracter 'o'
 
 
-##### Soporte para GPIOs
+## Soporte para GPIOs
 
 Clase `pyb.Pin`.
 
@@ -106,7 +88,7 @@ Las GPIOs disponibles van de 0 a 8
 Mas info en : http://test-ergun.readthedocs.org/en/latest/library/pyb.Pin.html
 
 
-##### Soporte para interrupciones en GPIOs
+## Soporte para interrupciones en GPIOs
 Clase `pyb.ExtInt`.
 
 Ejemplo:
@@ -137,7 +119,7 @@ Se implementaron los metodos:
 
 Mas info en : http://test-ergun.readthedocs.org/en/latest/library/pyb.ExtInt.html
 
-##### Soporte para DAC
+## Soporte para DAC
 Clase `pyb.DAC`.
 
 Ejemplo:
@@ -170,7 +152,7 @@ Existe solo el DAC 1
 A diferencia de la clase DAC de la pyboard (http://test-ergun.readthedocs.org/en/latest/library/pyb.DAC.html) se utilizaron valores de 10bit en vez de 8bits para aprovechar al maximo la resolucion del DAC.
 
 
-##### Soporte para Timers
+## Soporte para Timers
 
 Clase `pyb.Timer`.
 
@@ -206,7 +188,7 @@ del tiempo prefijado.
 No se implemento la clase TimerChannel, por lo que las funcionalidades de Output Compare e Input Capture no son accesibles.
 
 
-##### Soporte para PWM
+## Soporte para PWM
 
 Clase `pyb.PWM`
 
@@ -246,7 +228,7 @@ Salidas de PWM disponibles: 0 a 10
 La placa posee un solo modulo PWM con 11 salidas asociadas, por esta razon todas las salidas comparten la misma frecuencia, pero tienen un valor de ciclo de actividad independiente.
 
 
-##### Soporte para ADC
+## Soporte para ADC
 
 Clase `pyb.ADC`.
 
@@ -270,7 +252,7 @@ while True:
 Entradas AD disponibles: 1,2 y 3. El resultado del metodo read es el valor de conversion (10 bit de resolucion en 3.3V)
 
 
-##### Soporte para Keyboard (Poncho UI)
+## Soporte para Keyboard (Poncho UI)
 
 Clase `pyb.Keyboard`.
 
@@ -292,7 +274,7 @@ El constructor recibe la cantidad de filas y columnas que se sensan. El metodo g
 con el numero de fila y los 4 bits de menor peso corresponden con el numero de columna. Tambien puede utilizarse el metodo "get_matrix" el cual no es bloqueante y devolvera 0xFF si ninguna tecla es presionada.
 
 
-##### Soporte para LCD HD44780U (Poncho UI)
+## Soporte para LCD HD44780U (Poncho UI)
 
 Clase `pyb.LCD`.
 
@@ -325,7 +307,7 @@ El constructor recibe la cantidad de lineas (1,2,3 o 4) y el formato del caracte
 
   
 
-##### Soporte para EEPROM interna
+## Soporte para EEPROM interna
 
 Clase `pyb.EEPROM`.
 
@@ -405,7 +387,7 @@ Para volver a construir el diccionario, se lee el string desde la EEPROM mediant
 
 
 
-##### Soporte para SPI modo Master
+## Soporte para SPI modo Master
 
 Clase `pyb.SPI`.
 
@@ -443,7 +425,7 @@ Una vez creado el objeto spi se podra leer y escribir datos mediante el metodo w
 de frames spi (cantidad de bytes si los bits fueron configurados en 8) y devuelve un array de bytes con los datos leidos.
 
 
-##### Soporte para RTC
+## Soporte para RTC
 
 Clase `pyb.RTC`.
 
@@ -592,7 +574,7 @@ NOTA: El modulo RTC debe ser inicializado antes de utilizar el modulo utime.
 
 
 
-##### Soporte para I2C modo Master
+## Soporte para I2C modo Master
 
 Clase `pyb.I2C`.
 
@@ -779,8 +761,6 @@ Escribe integers en los registros de 16-bit del dispositivo slave.
         Raises:
             ValueError, TypeError, IOError
 
-
-
 ### Soporte de Modbus slave mediante la clase Slave.
 
 Example:
@@ -814,14 +794,6 @@ En este diccionario, las claves seran las direcciones de los registros, y los va
 En el ejemplo, se definen dos registros, uno en la direccion 0x4000 y otro en la direccion 0x4001 ambos con el valor 0.
 Se soportan comandos para leer y escribir registros, estos comandos modificaran los valores del diccionario.
 
-Para crear el objeto Slave, se necesita un objeto uart, la direccion del slave, el diccionario con los registros definidos y la constante
-que indica se se utilizara Modbus en modo ascii o rtu.
+Para crear el objeto Slave, se necesita un objeto uart, la direccion del slave, el diccionario con los registros definidos y la constante que indica se se utilizara Modbus en modo ascii o rtu.
 
-El metodo "receive" se debe ejecutar costantemente para recibir por el puerto serie las tramas modbus, al recibirlas se modificara el 
-estado del diccionario y se devolvera True, de lo contrario el metodo devolvera False.
-
-
-
-
-
-
+El metodo "receive" se debe ejecutar costantemente para recibir por el puerto serie las tramas modbus, al recibirlas se modificara el estado del diccionario y se devolvera True, de lo contrario el metodo devolvera False.
