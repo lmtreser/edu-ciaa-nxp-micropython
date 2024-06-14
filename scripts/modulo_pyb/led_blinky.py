@@ -1,6 +1,7 @@
 import pyb
 
 led1 = pyb.LED(1)
+pyb.delay(5000)
 
 while True:
     led1.on()
