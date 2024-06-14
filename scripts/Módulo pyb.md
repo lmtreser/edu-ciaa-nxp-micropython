@@ -57,4 +57,43 @@ while True:
     pyb.delay(1000)
 ```
 
----
+## Soporte Pulsadores: Clase Switch
+
+La clase Switch permitirá crear objetos que representan los pulsadores de la placa.
+
+### Constructor
+
+La clase posee un constructor que recibe un solo argumento, este argumento es el número de pulsador que controlará.
+
+Números de pulsadores: de 1 a 4
+
+### Métodos
+
+* switch() : Devuelve True si el pulsador está presionado, de lo contrario devuelve False
+* callback(fn) : Recibe como argumento una función la cual se ejecutará cuando se presione el pulsador.
+
+### Ejemplo 1
+
+```python
+import pyb
+switch1 = pyb.Switch(1)
+while True:
+    val = switch1.switch()
+    print('sw1:'+str(val))
+    pyb.delay(200)
+```
+
+### Ejemplo 2, uso de callbacks
+
+```python
+import pyb
+
+def func(sw):
+    print("sw pressed!")
+    print(sw)
+
+switch1 = pyb.Switch(1)
+switch1.callback(func)
+while True:
+    pyb.delay(1000)
+```
