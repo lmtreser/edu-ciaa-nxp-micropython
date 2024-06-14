@@ -10,7 +10,7 @@ El repositorio es una colección de recursos extraídos del sitio oficial del [P
 
 La [EDU-CIAA-NXP](https://www.proyecto-ciaa.com.ar/devwiki/doku.php%3Fid=desarrollo:edu-ciaa:edu-ciaa-nxp.html) es una **versión de bajo costo de la CIAA-NXP pensada para la enseñanza universitaria, terciaria y secundaria**.
 
-![](./edu-ciaa-nxp.png)
+![](./docs/edu-ciaa-nxp.png)
 
 ### Bloques funcionales
 
@@ -22,7 +22,7 @@ Sin embargo, con el objetivo de abaratar costos y reducir su complejidad la EDU-
 
 En la siguiente figura se observa un diagrama en bloques de la EDU-CIAA basada en LPC4337:
 
-![](./diagrama_en_bloques.jpg)
+![](./docs/diagrama_en_bloques.jpg)
 
 La EDU-CIAA cuenta con los siguientes módulos:
 
@@ -45,7 +45,7 @@ La EDU-CIAA cuenta con los siguientes módulos:
         * 1 puerto para Display LCD con 4 bits de datos, Enable y RS.
         * 9 pines genéricos de I/O.
 
-Consultar la asignación de pines de la EDU-CIAA-NXP en PDF, con información del uso de los mismos en el microcontrolador: [Asignación de pines](./Pinout.pdf).
+Consultar la asignación de pines de la EDU-CIAA-NXP en PDF, con información del uso de los mismos en el microcontrolador: [Asignación de pines](./docs/Pinout.pdf).
 
 ## Propósito, alcance, objetivos y requerimientos de la EDU-CIAA-NXP
 
