@@ -2,7 +2,7 @@
 
 Desarrollos en MicroPython con la placa EDU-CIAA-NXP, basada en el LPC4337 (dual core ARM Cortex-M4F y Cortex-M0).
 
-El repositorio es una colección de recursos extraídos del sitio oficial del [Proyecto CIAA](https://www.proyecto-ciaa.com.ar/index.html), excepto el directorio `/micropython/ejemplos` que contiene diversos scripts de ejemplo.
+El repositorio es una colección de recursos extraídos del sitio oficial del [Proyecto CIAA](https://www.proyecto-ciaa.com.ar/index.html), excepto el directorio `/scripts/ejemplos` que contiene diversos scripts de ejemplo.
 
 ---
 
@@ -45,7 +45,7 @@ La EDU-CIAA cuenta con los siguientes módulos:
         * 1 puerto para Display LCD con 4 bits de datos, Enable y RS.
         * 9 pines genéricos de I/O.
 
-Consultar la asignación de pines de la EDU-CIAA-NXP en PDF, con información del uso de los mismos en el microcontrolador: [Asignación de pines](./Pinout.pdf)
+Consultar la asignación de pines de la EDU-CIAA-NXP en PDF, con información del uso de los mismos en el microcontrolador: [Asignación de pines](./Pinout.pdf).
 
 ## Propósito, alcance, objetivos y requerimientos de la EDU-CIAA-NXP
 
@@ -107,7 +107,8 @@ Los siguientes son los requerimientos adoptados para la EDU-CIAA:
 Aquí se encuentra una tabla detallando las razones por las cuáles se agregaron o quitaron a la EDU-CIAA módulos originalmente disponibles en la CIAA:
 
 
-^ Módulo           ^  ¿Se incluye? ^ ¿Por qué?          ^ Observaciones                 ^
+| Módulo           |  ¿Se incluye? | ¿Por qué?          | Observaciones                 |
+| ---------------- | ------------- | ------------------ | ----------------------------- |
 | FUENTE           |       Sí  	   | Es mandatorio      | Se alimentará a través de USB |
 | CPU (LPC4337)	   |       Sí	   | Es mandatorio      |                               |
 | JTAG	           |       Sí      | Para debugging     | Componentes montaje opcional  |
@@ -128,8 +129,8 @@ Aquí se encuentra una tabla detallando las razones por las cuáles se agregaron
 | Expansión SPI	   |       Sí      | Conectividad al uC	| Pines disponibles en CON1     |
 | Expansión I2C	   |       Sí      | Conectividad al uC	| Pines disponibles en CON1     |
 | Expansión GPIO   |       Sí      | Conectividad al uC	| Pines disponibles en CON1     |
-| LEDs RGB x4      |       Sí      | P/práctica básica  |	                        |
-| Pulsadores x4    |       Sí      | P/práctica básica  |	                        |
+| LEDs RGB x4      |       Sí      | P/práctica básica  |                               |
+| Pulsadores x4    |       Sí      | P/práctica básica  |                               |
 | Int. Vaux 3.3V   |       Sí      | Uso habitual       | Tensión regulada del sistema  |
 | Int. Vaux 5V	   |       Sí      | Uso habitual       | Tensión de entrada al sistema |
 | Int. Vaux 24V	   |       No	   | Ausencia de 24V    |                               |
