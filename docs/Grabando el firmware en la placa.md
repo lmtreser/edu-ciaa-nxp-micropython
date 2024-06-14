@@ -53,7 +53,7 @@ La solución es ejecutar:
 make erase_fs
 ```
 
-### La ventana de carga del script indica ERROR =====
+### La ventana de carga del script indica ERROR
 
 Es posible que la placa ya tenga un script que imprima datos por la consola constantemente, esto interfiere con el proceso de grabación del script, se debe iniciar primero el proceso de grabación y luego la placa, para ello se utiliza el botón de reset.
 

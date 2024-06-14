@@ -1,3 +1,13 @@
+# Bibliotecas Python
+
+El soporte para Python cuenta con una amplia cantidad de caracterísicas del lenguaje Python habilitadas, como lo son el manejo de listas, diccionarios, funciones matemáticas, programación orientada a objetos, bytearray y collections entre otras.
+
+* Soporte de hardware
+* Soporte fecha y hora
+* Soporte protocolo Modbus
+* Soporte [JSON](https://docs.python.org/2/library/json.html)
+* Soporte [funciones matemáticas](https://docs.python.org/2/library/math.html)
+
 # Modulo pyb:
 
 ## Soporte de los 4 LEDS
