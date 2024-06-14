@@ -39,4 +39,4 @@ while True:
 
 NOTA: El módulo RTC debe ser inicializado antes de utilizar el modulo utime.
 
-Mas [información en](https://micropython.org/doc/module/time|https://micropython.org/doc/module/time)
+Mas información en [https://micropython.org/doc/module/time](https://micropython.org/doc/module/time)
