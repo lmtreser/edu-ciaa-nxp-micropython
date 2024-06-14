@@ -344,3 +344,368 @@ while True:
     print("counter:" + str(counter))
 ```
 
+## Soporte EEPROM interna: Clase EEPROM
+
+La clase EEPROM permitirá crear un objeto que representa la memoria EEPROM interna del microcontrolador.
+
+### Constructor
+
+El constructor de la clase no recibe parámetros.
+
+### Métodos
+
+La clase EEPROM posee métodos para leer y escribir bytes (8 bits), enteros (32 bits), números con punto flotante (32 bits) y Strings.
+
+- `write_byte(addr, val)`: Escribe un byte en la dirección indicada y devuelve la cantidad de bytes escritos (1 byte).
+- `write_int(addr, val)`: Escribe un entero en la dirección indicada y devuelve la cantidad de bytes escritos (4 bytes).
+- `write_float(addr, val)`: Escribe un float en la dirección indicada y devuelve la cantidad de bytes escritos (4 bytes).
+- `write(val)`: Escribe un String a partir de la dirección 0x0000 de la EEPROM.
+
+- `read_byte(addr)`: Lee un byte en la dirección indicada.
+- `read_int(addr)`: Lee un entero desde la dirección indicada.
+- `read_float(addr)`: Lee un float desde la dirección indicada.
+- `readall()`: Lee un string desde la dirección 0x0000 de la EEPROM.
+
+La capacidad de la EEPROM es de 16 Kbytes.
+
+### Ejemplo 1
+
+```python
+import pyb
+eeprom = pyb.EEPROM()
+
+# R/W bytes test
+eeprom.write_byte(0x0000, 0x27)
+eeprom.write_byte(0x0004, 0x28)
+for addr in range(0, 16):
+    val = eeprom.read_byte(addr)
+    print(hex(val))
+
+# R/W 32bit integers test
+eeprom.write_int(0x0000, 0x11223344)
+eeprom.write_int(0x0004, 0x12345678)
+val = eeprom.read_int(0x0000)
+print(hex(val))
+val = eeprom.read_int(0x0004)
+print(hex(val))
+
+# R/W 64bit doubles test
+eeprom.write_float(0x0000, 3.14)
+val = eeprom.read_float(0x0000)
+print(str(val))
+```
+
+### Ejemplo: Lectura y escritura de un diccionario usando JSON
+
+```python
+import pyb
+import json
+
+dic = {
+    "k1": "Hello",
+    "k2": "World",
+    "k3": 2016,
+    "k4": 3.14
+}
+print("Python Dict obj:")
+print(dic)
+
+# write dict in eeprom
+jsonStr = json.dumps(dic)
+print("JSON to write:")
+print(jsonStr)
+eeprom = pyb.EEPROM()
+eeprom.write(jsonStr)
+
+# read dict from eeprom
+print("Python Dict obj from EEPROM:")
+jsonStr = eeprom.readall()
+dic = json.loads(jsonStr)
+print(dic)
+```
+
+En este ejemplo se crea un diccionario Python y luego se serializa utilizando el módulo `json`. Una vez obtenido el String que representa al diccionario, se graba en la EEPROM mediante el método `write`. Para volver a construir el diccionario, se lee el String desde la EEPROM mediante el método `readall` y luego se decodifica mediante el método `loads` del módulo `json`.
+
+Aquí tienes el markdown corregido y formateado para ser compatible con GitHub:
+
+## Soporte interrupciones en GPIOs: Clase ExtInt
+
+```python
+import pyb
+
+def callBack(line):
+    print("Pin Interrupt!")
+    print("Line = ", line)
+
+p = pyb.Pin(8)
+p.init(pyb.Pin.OUT_PP, pyb.Pin.PULL_NONE)
+print(p)
+
+int = pyb.ExtInt(p, pyb.ExtInt.IRQ_RISING, pyb.Pin.PULL_NONE, callBack)
+print(int)
+
+while True:
+    pyb.delay(1000)
+    print("tick")
+```
+
+Existen 4 interrupciones disponibles para asignar a cualquiera de las 9 GPIOs. Se implementaron los siguientes métodos:
+
+- `enable()`
+- `disable()`
+- `swint()`
+- `line()`
+
+Más información en: [pyb.ExtInt](http://test-ergun.readthedocs.org/en/latest/library/pyb.ExtInt.html)
+
+## Soporte PWM: Clase PWM
+
+```python
+import pyb
+
+pyb.PWM.set_frequency(1000)
+
+out0 = pyb.PWM(0)
+out0.duty_cycle(50)  # 50%
+print("Duty cycle :" + str(out0.duty_cycle()))
+
+out1 = pyb.PWM(1)
+out1.duty_cycle(25)
+
+out10 = pyb.PWM(10)
+out10.duty_cycle(75)
+
+while True:
+    pyb.delay(1000)
+```
+
+### Salidas de PWM disponibles: 0 a 10
+
+- 0: GPIO_2
+- 1: GPIO_8
+- 2: T_FIL1
+- 3: T_FIL2
+- 4: T_FIL3
+- 5: T_COL0
+- 6: T_COL1
+- 7: T_COL2
+- 8: LCD_1
+- 9: LCD_2
+- 10: LCD_3
+
+La placa posee un solo módulo PWM con 11 salidas asociadas. Por esta razón, todas las salidas comparten la misma frecuencia, pero tienen un valor de ciclo de actividad independiente.
+
+## Soporte Teclado Matricial: Clase Keyboard
+
+```python
+import pyb
+
+keyboard = pyb.Keyboard(4, 4)  # 4 filas, 4 columnas
+print(keyboard)
+
+while True:
+    key = keyboard.get_char()
+    print("key:" + str(key))
+```
+
+El constructor recibe la cantidad de filas y columnas que se sensan. El método `get_char` se quedará esperando que se presione una tecla, devolviendo un byte donde los 4 bits de más peso corresponden con el número de fila y los 4 bits de menor peso corresponden con el número de columna. También puede utilizarse el método `get_matrix`, el cual no es bloqueante y devolverá `0xFF` si ninguna tecla es presionada.
+
+### Pines de Conexión del Teclado
+
+- T_FIL0
+- T_FIL1
+- T_FIL2
+- T_FIL3
+- T_COL0
+- T_COL1
+- T_COL2
+- GPIO8 (T_COL3)
+
+## Soporte LCD tipo HD44780U: Clase LCD
+
+```python
+import pyb
+
+lcd = pyb.LCD(2, 0)  # 2 líneas, formato de punto: 5x8
+lcd.clear()
+
+lcd.write("Test LCD\nEDUCIAA")
+pyb.delay(1000)
+
+lcd.clear()
+lcd.config_cursor(True, True)  # Cursor ON, Blink ON
+
+c = 0
+while True:
+    c = c + 1
+    lcd.goto_xy(0, 0)
+    lcd.write("counter:" + str(c))
+    lcd.goto_xy(10, 1)
+    lcd.write(str(c))
+    pyb.delay(1000)
+```
+
+El constructor recibe la cantidad de líneas (1, 2, 3 o 4) y el formato del caracter (0: 5x8 - 1: 5x10). El cursor se encuentra deshabilitado por defecto. Mediante el método `config_cursor` es posible habilitar su visualización y blinking. El método `goto_xy` posiciona el cursor en la columna y fila especificada, permitiendo al método `write` escribir desde dicha posición.
+
+## Soporte SPI modo Master: Clase SPI
+
+```python
+import pyb
+
+spi = pyb.SPI(8, 0, 10000)
+
+dataTx = bytearray()
+dataTx.append(0x55)
+dataTx.append(0x55)
+dataTx.append(0x55)
+dataTx.append(0x55)
+
+while True:
+    print("send:")
+    print(dataTx)
+    spi.write(dataTx)
+    pyb.delay(1000)
+
+    dataRx = spi.read(5)
+    print("received:")
+    print(dataRx)
+    pyb.delay(1000)
+```
+
+El constructor de la clase SPI recibe 3 argumentos:
+
+- Cantidad de bits: 4, 8 o 16.
+- Modo del SPI: 0, 1, 2 o 3.
+- Frecuencia del clock SPI: expresada en Hz.
+
+Una vez creado el objeto `spi`, se podrá leer y escribir datos mediante el método `write`, el cual recibe un bytearray, y el método `read`, el cual recibe como argumento la cantidad de frames SPI (cantidad de bytes si los bits fueron configurados en 8) y devuelve un array de bytes con los datos leídos.
+
+## Soporte RTC: Clase RTC
+
+```python
+import pyb
+rtc = pyb.RTC()
+
+# (year, month, day, weekday, hours, minutes, seconds)
+# newDt = [2015, 12, 31, 0, 18, 16, 0]
+# rtc.datetime(newDt)
+
+while True:
+    now = rtc.datetime()
+    print(now)
+    pyb.delay(1000)
+```
+
+El método `datetime` lee o establece los valores de fecha y hora del módulo RTC. Si no se le pasan argumentos, el método devolverá una tupla de 7 valores con la fecha y hora actual. Si se le pasa una tupla como argumento, esos valores se cargarán en el módulo RTC. El formato de la tupla es:
+
+(year, month, day, weekday, hours, minutes, seconds)
+
+El campo "weekday" toma los valores de 0 a 6. El módulo RTC continúa funcionando después de un reinicio del CPU y si se alimenta con una batería, el RTC seguirá funcionando incluso sin la alimentación principal del CPU.
+
+### Ejemplo de calibración
+
+```python
+import pyb
+rtc = pyb.RTC()
+rtc.calibration(0)
+newDt = [2015, 12, 31, 0, 18, 16, 0]
+rtc.datetime(newDt)
+```
+
+El método `calibration` ajusta periódicamente el contador del módulo RTC. Los valores permitidos son de -131072 a 131072. Leer [este documento](http://www.nxp.com/documents/user_manual/UM10503.pdf) para información detallada del procedimiento de calibración. Después de la calibración, se debe establecer una fecha y hora.
+
+### Ejemplo de uso de registros de backup
+
+```python
+import pyb
+rtc = pyb.RTC()
+
+# rtc.write_bkp_reg(0, 27)
+# rtc.write_bkp_reg(32, 28)
+# rtc.write_bkp_reg(63, 29)
+
+while True:
+    print(rtc.read_bkp_reg(0))
+    print(rtc.read_bkp_reg(32))
+    print(rtc.read_bkp_reg(63))
+    pyb.delay(1000)
+```
+
+Existen 64 registros de 32 bits que mantendrán sus valores incluso después de un reinicio del CPU. Si se alimenta con una batería, los valores se mantendrán incluso sin la alimentación principal del CPU. El método `write_bkp_reg` tiene como argumento la dirección del registro (0 a 63) y el valor de 32 bits a escribir. El método `read_bkp_reg` tiene como argumento la dirección del registro (0 a 63) y devolverá el valor que se encuentra en el mismo.
+
+### Ejemplo de uso de alarma
+
+```python
+import pyb
+rtc = pyb.RTC()
+
+newDt = [2015, 12, 31, 0, 20, 15, 0]
+rtc.datetime(newDt)
+
+def rtcCallback(rtc):
+    print("Alarm int!")
+
+alarmDt = [2015, 12, 31, 0, 20, 16, 10]
+rtc.alarm_datetime(alarmDt, pyb.RTC.MASK_SEC | pyb.RTC.MASK_MIN)
+rtc.callback(rtcCallback)
+
+print("alarm:")
+print(rtc.alarm_datetime())
+```
+
+En este ejemplo se define una función (`rtcCallback`) que se ejecutará cuando se cumpla la fecha de la alarma. Mediante el método `alarm_datetime` se configura (o lee) la fecha de la alarma con la misma tupla de 7 valores usada para configurar la fecha y hora actual. Como segundo argumento se pasa la máscara de la alarma, la cual se construye con las constantes:
+
+- `pyb.RTC.MASK_SEC`: Se chequea el campo de segundos en la comparación.
+- `pyb.RTC.MASK_MIN`: Se chequea el campo de minutos en la comparación.
+- `pyb.RTC.MASK_HR`: Se chequea el campo de horas en la comparación.
+- `pyb.RTC.MASK_DAY`: Se chequea el campo de día en la comparación.
+- `pyb.RTC.MASK_MON`: Se chequea el campo de mes en la comparación.
+- `pyb.RTC.MASK_YR`: Se chequea el campo de año en la comparación.
+- `pyb.RTC.MASK_DOW`: Se chequea el campo de día de la semana en la comparación.
+
+ Mediante el método `callback` se setea la función que se ejecutara cuando se produzca la alarma. En el ejemplo se construye la máscara con segundos y minutos, por lo que la alarma se producirá cada hora, a los 16 minutos y 10 segundos.
+
+Para deshabilitar la alarma puede ejecutarse el método `alarm_disable`.
+
+## Soporte I2C Master: Clase I2C
+
+Ejemplo lectura y escritura de una memoria tipo 24C04:
+
+```python
+import pyb
+
+print("Test I2C with AT24C04")
+
+i2c = pyb.I2C(100000)  # 100Khz
+i2c.slave_addr(0x50)
+
+def writeByte(addr, value):
+    data = bytearray()
+    data.append(addr)
+    data.append(value)
+    i2c.write(data)
+
+def readBytes(addr, size):
+    data = bytearray()
+    data.append(addr)
+    i2c.write(data)
+    return i2c.read(size)
+
+writeByte(0x00, 11)
+pyb.delay(10)
+writeByte(0x01, 22)
+pyb.delay(10)
+writeByte(0x02, 33)
+pyb.delay(10)
+
+data = readBytes(0x00, 16)
+print("[0]:" + str(data[0]))
+print("[1]:" + str(data[1]))
+print("[2]:" + str(data[2]))
+```
+
+El constructor de la clase `I2C` recibe como argumento la velocidad (100KHz o 400KHz) expresada en Hz. Luego de crear el objeto `i2c`, se ejecuta el método `slave_addr`, mediante el cual se configura la dirección del dispositivo esclavo que se utilizará al leer y escribir datos por el bus. Esto puede cambiarse en cualquier momento.
+
+Se puede leer y escribir datos mediante el método `write`, que recibe un bytearray, y el método `read`, que recibe como argumento la cantidad de bytes a leer y devuelve un array de bytes con los datos leídos.
+
+En el ejemplo se escriben dos funciones: una para escribir un byte en la memoria y otra para leer una cierta cantidad de bytes, siempre indicando la dirección.
