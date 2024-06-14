@@ -4,7 +4,7 @@ Utilizaremos Ubuntu en los ejemplos de cómo instalar las herramientas necesaria
 
 ## Instalación del compilador
 
-Primero necesitaremos un compilador para ARM (v4.8) el cual descargaremos del [siguiente link](https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q2-update/+download/gcc-arm-none-eabi-4_8-2014q2-20140609-linux.tar.bz2|arm-none-eabi-gcc para Linux) o [accediendo al sitio](https://launchpad.net/gcc-arm-embedded|https://launchpad.net/gcc-arm-embedded).
+Primero necesitaremos un compilador para ARM (v4.8) el cual descargaremos del [siguiente link](https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q2-update/+download/gcc-arm-none-eabi-4_8-2014q2-20140609-linux.tar.bz2|arm-none-eabi-gcc) o [accediendo al sitio](https://launchpad.net/gcc-arm-embedded|https://launchpad.net/gcc-arm-embedded).
 
 Una vez obtenido el archivo `tar.bz2`, lo descomprimimos y agregamos al `PATH` del sistema la ruta donde se encuentran los binarios del compilador:
 
